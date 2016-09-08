@@ -12,7 +12,23 @@ angular.module('itunes').service('itunesService', function($http, $q){
     var callback = "&callback=JSON_CALLBACK";
     this.getSongData = function(artist) {
       return $http.jsonp(baseURL + artist + callback).then(function(results) {
-        return results.data.results;
+        var allSongData = results.data.results;
+        return allSongData;
       })
+    }
+    this.parseData = function (allSongData) {
+      var parsedSongData = [];
+      for (var i = 0; i < allSongData.length; i++) {
+        var song = allSongData[i];
+        var parsedSong = {};
+        for (var prop in song) {
+          if (['trackName', 'previewUrl', 'artistName', 'collectionName', 'collectionPrice', 'primaryGenreName', 'artworkUrl60', 'trackPrice'].indexOf(prop) !== -1) {
+            parsedSong[prop] = song[prop];
+          }
+        }
+        parsedSongData.push(parsedSong);
+      }
+      return parsedSongData;
+
     }
 });
