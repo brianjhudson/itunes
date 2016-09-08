@@ -13,8 +13,8 @@ angular.module('itunes').controller('mainCtrl', function($scope, itunesService){
         {field: 'collectionName', displayName: 'Album'},
         {field: 'artworkUrl60', displayName: 'Album Art', width: '110px', cellTemplate: '<div class="ngCellText" ng-class="col.colIndex()"><img src="{{row.getProperty(col.field)}}"></div>'},
         {field: 'primaryGenreName', displayName: 'Type'},
-        {field: 'trackPrice', displayName: 'Track Price'},
-        {field: 'collectionPrice', displayName: 'Album Price'},
+        {field: 'trackPrice', cellFilter: 'currency', displayName: '  Track Price'},
+        {field: 'collectionPrice', cellFilter: 'currency', displayName: 'Album Price'},
       ]
   };
 
