@@ -23,11 +23,12 @@ angular.module('itunes').controller('mainCtrl', function($scope, itunesService){
   //First inject itunesService into your controller.
 
     //code here
-  $scope.getSongData = function(artist) {
-    itunesService.getSongData(artist).then(function(allSongData){
+  $scope.getSongData = function(searchTerm) {
+    itunesService.getSongData(searchTerm).then(function(allSongData){
       // console.log(allSongData[0]);
       var parsedSongData = itunesService.parseData(allSongData);
       $scope.songData = parsedSongData;
+      $scope.searchTerm = '';
     })
   }
 

@@ -10,8 +10,8 @@ angular.module('itunes').service('itunesService', function($http, $q){
     //Code here
     var baseURL = "https://itunes.apple.com/search?term=";
     var callback = "&callback=JSON_CALLBACK";
-    this.getSongData = function(artist) {
-      return $http.jsonp(baseURL + artist + callback).then(function(results) {
+    this.getSongData = function(searchTerm) {
+      return $http.jsonp(baseURL + searchTerm + callback).then(function(results) {
         var allSongData = results.data.results;
         return allSongData;
       })
