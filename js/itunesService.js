@@ -4,9 +4,15 @@ angular.module('itunes').service('itunesService', function($http, $q){
 
   //Write a method that accepts an artist's name as the parameter, then makes a 'JSONP' http request to a url that looks like this
   //https://itunes.apple.com/search?term=' + artist + '&callback=JSON_CALLBACK'
-  //Note that in the above line, artist is the parameter being passed in. 
+  //Note that in the above line, artist is the parameter being passed in.
   //You can return the http request or you can make your own promise in order to manipulate the data before you resolve it.
 
     //Code here
-    
+    var baseURL = "https://itunes.apple.com/search?term=";
+    var callback = "&callback=JSON_CALLBACK";
+    this.getSongData = function(artist) {
+      return $http.JSONP(baseURL + artist + callback).then(function(results) {
+        
+      })
+    }
 });
